@@ -161,6 +161,12 @@ body {
   font-size: 1em;
   line-height: 1.5em;
 }
+.inner{
+  width: 100%;
+}
+.twoway.right .wrapper{
+  float:right;
+}
 .small {
   /* 13px / 18px */
 
@@ -207,7 +213,7 @@ body {
 *  5.55555% | %  25  50  75  100 | 5.55555%
 *
 */
-header, .twoway {
+header, section, .twoway {
   margin: 0 5.555555555555555%;
 }
 h1, h2 {
@@ -278,7 +284,7 @@ h3 {
   
     font-size: 1em;
   }
-  .twoway .wrapper {
+  .twoway > .wrapper {
     float: left;
     width: 50%;
   }
@@ -298,7 +304,7 @@ h3 {
   
     font-size: 1em;
   }
-  header, .twoway {
+  header, section, .twoway {
     margin: 0 16.666666666666664%;
   }
 }
@@ -317,7 +323,7 @@ h3 {
   
     font-size: 1em;
   }
-  header, .twoway {
+  header, section, .twoway {
     margin: 0 27.77777777777778%;
   }
 }
@@ -340,17 +346,17 @@ h3 {
 */
 /* @media screen and (min-width: 1872px) */
 @media screen and (min-width: 117em) {
-  header, .twoway {
+  header, section, .twoway {
     margin: 0 5.555555555555555%;
   }
   header .wrapper {
     width: 37.5%;
     margin-left: 25%;
   }
-  .twoway .wrapper {
+  .twoway > .wrapper {
     width: 25%;
   }
-  .twoway .wrapper:first-child {
+  .twoway > .wrapper:first-child {
     margin-left: 25%;
   }
 }
