@@ -1,17 +1,10 @@
 "use strict"
 
-# module.exports = function(settings, nconf, libs){
-
-#   var app = libs.app;
-
-#   app.get('/keys', function)
-
-#   return this;
-# }
-
 module.exports = (settings, nconf, libs) ->
 
   app = libs.app
+
+  uuid = require('node-uuid');
 
   # RSA Key pair generation library
   RSA_INTERFACE = require './RSA'
@@ -20,6 +13,7 @@ module.exports = (settings, nconf, libs) ->
 
   app.get '/keys', (req, res) ->
     RSA.create (ret) ->
+      ret.uid = uuid.v4().replace /-/gm, ""
       res.send ret
-      
+
   @
