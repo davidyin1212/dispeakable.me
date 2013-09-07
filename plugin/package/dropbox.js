@@ -27,8 +27,14 @@ function getContent(theUrl){
 }
 
 function setMyKey() {
-  if (localStorage.getItem("mykey") == null) {
-    //Fetch from server and setup
+    if (! localStorage.getItem("me")) {
+    $.getJSON(
+      "http://www.dispeakable.me/keys",
+      function(data) {
+        localStorage.setItem("me", JSON.stringify(data));
+      }
+    );
+
 
   }
 }
