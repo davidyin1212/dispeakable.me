@@ -1,8 +1,11 @@
 
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelector('input').addEventListener('click', clickHandler);
+});
 
 
 // Send message to background script
-function getSelection() {
+function clickHandler() {
 
 
 	// chrome.extension.sendMessage({
