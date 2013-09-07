@@ -20,7 +20,7 @@
   	{
   		"matches": ["<all_urls>"],
   		"css": [],
-  		"js": ["jquery-1.10.2.js", "content_script.js"],
+  		"js": ["jquery-1.10.2.js", "rangy-core.js", "rangy-cssclassapplier.js", "content_script.js"],
       "run_at": "document_start"
   	}
   ],

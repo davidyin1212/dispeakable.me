@@ -1,14 +1,16 @@
 APP_KEY = "j2q6r6vvd5g8ulm"
 
 document.addEventListener('DOMContentLoaded', function () {
+  setMyKey();
+
   $('#friend_link').on('keyup', function(e) {
     if (e.keyCode === 13) {
     	clickHandler();
+
     }
   });
 });
 
-console.log("chosen.")
 
 // Send message to background script
 function clickHandler() {
@@ -27,20 +29,60 @@ function getContent(theUrl){
   );
 }
 
-function setKey(uid,privatekey,publickey){
-  var person = {};
-  person["uid"] = uid;
-  person["public"] = publickey;
+function setMyKey() {
+    if (! localStorage.getItem("me")) {
+    $.getJSON(
+      "http://www.dispeakable.me/keys",
+      function(data) {
+        localStorage.setItem("me", JSON.stringify(data));
+      }
+    );
 
-  var prev_friendlist = JSON.parse(localStorage.getItem("friendlist"));
-  var new_friendlist = {'data':[]};
 
-  if (prev_friendlist == null){
-  	new_friendlist.data.push(JSON.stringify(person));
-  }else {
-  	new_friendlist = prev_friendlist.data.push(JSON.stringify(person));
   }
-  localStorage.setItem("friendlist", new_friendlist);
-  console.log(new_friendlist.data.length);
-  console.log(new_friendlist.data);
+}
+
+function setFriendsKey(uid,publickey,name){
+
+  var friendList;
+  var person = {"uid": uid, "public": publickey};
+  var uidExists = false;
+  
+  // Create object representing friendList in localStorage
+  if (localStorage.getItem("friendList") == null) {
+    friendList = [];
+  }
+  else {
+    friendList = JSON.parse(localStorage.getItem("friendList"));
+  }
+
+  // First if uid exists in localStorage
+  for (var i in friendList) {
+    if (friendList[i]["uid"] == uid) {
+      uidExists == true;
+      break;
+    }
+  }
+
+  if (! uidExists) {
+    friendList.push(person);
+  }
+
+  // Now synchronize
+  localStorage.setItem("friendList", JSON.stringify(friendList));
+
+
+  // if (prev_friendlist == null){
+  //   // if prev freindlist is null, then we add a new array.
+  // 	new_friendlist.data.push(JSON.stringify(person));
+  //   localStorage.setItem("friendlist", JSON.stringify(new_friendlist));
+
+  // }else {
+  //   // if there's list already, then we get the localstorage item and add to it, store the new list.
+  //   console.log(typeof prev_friendlist);
+  //   //new_friendlist = prev_friendlist.push(JSON.stringify(person));
+    
+  // }
+  // //console.log(new_friendlist.data.length);
+  // console.log(new_friendlist.data);
 }
