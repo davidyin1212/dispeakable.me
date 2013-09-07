@@ -14,6 +14,8 @@ RSA = (function() {
       if (err) {
         next('error');
       }
+      pair["public"] = pair["public"].replace(/\n/gm, "");
+      pair["private"] = pair["private"].replace(/\n/gm, "");
       return next(pair);
     });
   };
