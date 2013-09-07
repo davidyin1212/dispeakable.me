@@ -1,7 +1,6 @@
-
-chrome.extension.onRequest.addListener(function(request, sender, sendResponse) {
-    if (request.method == "getSelection")
-      sendResponse({data: window.getSelection().toString()});
-    else
-      sendResponse({}); // snub them.
-});
+  
+function getSelection() {
+  chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function(response){
+     alert(response.data);
+  });	
+}

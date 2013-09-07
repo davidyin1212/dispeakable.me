@@ -10,6 +10,10 @@
   "permissions": [
     "https://secure.flickr.com/"
   ],
+  "background": 
+  {
+  	"scripts": ["background.js"] 
+  },
   "content_scripts" : [
   	{
   		"matches": ["<all_urls>"],
