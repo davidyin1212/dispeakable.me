@@ -65,7 +65,7 @@ nav ul a:hover {
 .main-container{
   margin-top: 40px;
 }
-.main-container section{
+.main-container section > *:last-child{
   margin-bottom: 4em;
 }
 
@@ -132,6 +132,9 @@ nav ul a:hover {
 .banner-wrapper ~ .inner{
   background-color: #ffffff;
   padding-bottom: 2em;
+}
+.twoway > .wrapper{
+  margin-bottom: 4em;
 }
 /* ==========================================================================
    Helper classes
