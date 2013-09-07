@@ -38,13 +38,8 @@ function setKey(uid,privatekey,publickey){
   if (prev_friendlist == null){
   	new_friendlist.push(JSON.stringify(person));
   }else {
-  	console.log(prev_friendlist);
-  	
   	new_friendlist = prev_friendlist.push(JSON.stringify(person));
   }
-
-  console.log(new_friendlist.length);
-
   localStorage.setItem("friendlist", new_friendlist);
 
 
