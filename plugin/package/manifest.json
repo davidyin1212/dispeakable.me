@@ -8,8 +8,13 @@
   "version": "0.0",
 
   "permissions": [
-    "https://secure.flickr.com/"
+    "tabs"
   ],
+  "background": 
+  {
+  	"scripts": ["background.js"],
+  	"persistent": false
+  },
   "content_scripts" : [
   	{
   		"matches": ["<all_urls>"],
