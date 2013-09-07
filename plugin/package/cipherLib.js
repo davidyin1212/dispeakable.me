@@ -37,8 +37,6 @@ function setMyKey() {
         localStorage.setItem("me", JSON.stringify(data));
       }
     );
-
-
   }
 }
 
