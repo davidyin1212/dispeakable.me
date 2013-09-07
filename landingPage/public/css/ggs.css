@@ -161,6 +161,12 @@ body {
   font-size: 1em;
   line-height: 1.5em;
 }
+.inner{
+  width: 100%;
+}
+.twoway.right .wrapper{
+  float:right;
+}
 .small {
   /* 13px / 18px */
 
@@ -278,7 +284,7 @@ h3 {
   
     font-size: 1em;
   }
-  .twoway .wrapper {
+  .twoway > .wrapper {
     float: left;
     width: 50%;
   }
@@ -347,10 +353,10 @@ h3 {
     width: 37.5%;
     margin-left: 25%;
   }
-  .twoway .wrapper {
+  .twoway > .wrapper {
     width: 25%;
   }
-  .twoway .wrapper:first-child {
+  .twoway > .wrapper:first-child {
     margin-left: 25%;
   }
 }

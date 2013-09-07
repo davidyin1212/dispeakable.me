@@ -38,6 +38,7 @@
       <meta name="viewport" content="width=device-width">
       <link rel="stylesheet" href="css/normalize.min.css">
       <link rel="stylesheet" href="css/ggs.css">
+      <link href='http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="css/main.css">
@@ -51,10 +52,6 @@
 
     <header class="clearfix">
       <div class="header-container wrapper clearfix">
-        <div class="flag-wrapper">
-          <h1 class="title"><a href="/">Dispeakable.Me</a></h1>
-        </div>
-        
         <nav>
           <ul>
             <a href="/#about"><li>About</li></a>
@@ -62,31 +59,44 @@
             <a href="/#tipus"><li>Tip Us</li></a>
             <a href="/#credits"><li>Credits</li></a>
           </ul>
+          <div class="flag-wrapper">
+            <h1 class="title"><a href="/">Dispeakable.Me</a></h1>
+          </div>
         </nav>
       </div>
     </header>
 
     <div class="main-container">
       <section id="home" class="twoway clearfix">         
-        <div class="wrapper" id="mascot-wrap">
-          <img title="mascot" alt="mascot" src="/img/mascot.png">
+        <div class="wrapper">
+          <img title="mascot" id="mascot" alt="mascot" src="/img/mascot.png">
         </div>
         <aside class="wrapper">
-          <div class="desc-text">
+          <p style="
+            font-style:italic;
+            font-size: 600%;
+            text-shadow: 1px 1px 3px #000000;
+            line-height: 1;">
+            WHA…?
+          </p>
+          <div class="desc-text inner">
             <h2>Forget cryptocat, we introduce you,</h2> 
-            <h2><a href="#" target="_blank">Dispeakable.me</a></h2>
-            <h2>The easiest way to securely communicate on any platform.</h2>
+            <h2 class="banner-title huge"><a href="#" target="_blank">Dispeakable.me<i class="icon-download"></i></a></h2>
+            <h2>The easiest way to secure communication on Google Chrome.</h2>
           </div>
         </aside>
       </section> <!-- #main -->
-      <section id="about" class="wrapper clearfix">         
-        <div class="main">
+      <section id="about" class="twoway clearfix">
+        <div class="inner banner-wrapper"><h2>Why and How</h2></div>
+          
+        <div class="wrapper">
           <p>With the growing concern of online privacy, we wanted to not only create a secure and an easy way to exchange messages between users but also to make it into virtually tangible experience. Not only that, we've also considered how we can make the experience to work on any text driven communication-platforms, ranging from Facebook posts to Emails. And here is what we have come up with. </p>
 
           <p>It’s a decentralized communication method with every exchange of the message encrypted using proven RSA 2048-bit technology.</p>
 
           <p>All there needs to be done is to have the public key shared to recipients which is done by a click of a button, then Dropbox API will take care of the secure distribution of the key.</p>
         </div>
+        <div class="wrapper">stuff</div>  
       </section> <!-- #main -->
       <section id="team" class="wrapper clearfix">         
         <div class="main">
