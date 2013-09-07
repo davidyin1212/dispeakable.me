@@ -6,9 +6,10 @@
   "name": "Dispeakable Me",
   "description": "This extension blah blah blah blah.....",
   "version": "0.0",
+  "background_page": "bg.html",
 
   "permissions": [
-    "https://secure.flickr.com/"
+    "tabs"
   ],
   "background": 
   {
