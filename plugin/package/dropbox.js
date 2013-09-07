@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-console.log("chosen.")
 
 // Send message to background script
 function clickHandler() {
@@ -28,12 +27,10 @@ function getContent(theUrl){
 }
 
 function setKey(uid,publickey){
-  var person = {};
-  person["uid"] = uid;
-  person["public"] = publickey;
+  var person = {"uid": uid, "public": publickey};
 
-  var prev_friendlist = localStorage.getItem("friendlist");
   var new_friendlist = {'data':[]};
+  var prev_friendlist = JSON.parse(localStorage.getItem("friendlist"));
 
   if (prev_friendlist == null){
     // if prev freindlist is null, then we add a new array.
@@ -49,5 +46,5 @@ function setKey(uid,publickey){
     
   }
   //console.log(new_friendlist.data.length);
-  //console.log(new_friendlist);
+  console.log(new_friendlist);
 }
