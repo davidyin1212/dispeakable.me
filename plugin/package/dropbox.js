@@ -1,9 +1,12 @@
 APP_KEY = "j2q6r6vvd5g8ulm"
 
 document.addEventListener('DOMContentLoaded', function () {
+  setMyKey();
+
   $('#friend_link').on('keyup', function(e) {
     if (e.keyCode === 13) {
     	clickHandler();
+
     }
   });
 });
