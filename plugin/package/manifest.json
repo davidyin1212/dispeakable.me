@@ -9,7 +9,9 @@
 
   "permissions": [
     "tabs",
-    "contentSettings"
+    "contentSettings",
+    "<all_urls>",
+    "storage"
   ],
   "content_scripts" : [
   	{
