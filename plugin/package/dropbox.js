@@ -26,7 +26,14 @@ function getContent(theUrl){
   );
 }
 
-function setKey(uid,publickey){
+function setMyKey() {
+  if (localStorage.getItem("mykey") == null) {
+    //Fetch from server and setup
+
+  }
+}
+
+function setFriendsKey(uid,publickey,name){
 
   var friendList;
   var person = {"uid": uid, "public": publickey};
