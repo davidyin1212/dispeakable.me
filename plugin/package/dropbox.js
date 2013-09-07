@@ -30,7 +30,7 @@ function setKey(uid,publickey){
   var person = {"uid": uid, "public": publickey};
 
   var new_friendlist = {'data':[]};
-  var prev_friendlist = JSON.parse(localStorage.getItem("friendlist"));
+  var prev_friendlist = localStorage.getItem("friendlist");
 
   if (prev_friendlist == null){
     // if prev freindlist is null, then we add a new array.
@@ -39,12 +39,10 @@ function setKey(uid,publickey){
 
   }else {
     // if there's list already, then we get the localstorage item and add to it, store the new list.
-    console.log(prev_friendlist);
-
-
+    console.log(typeof prev_friendlist);
     //new_friendlist = prev_friendlist.push(JSON.stringify(person));
     
   }
   //console.log(new_friendlist.data.length);
-  console.log(new_friendlist);
+  console.log(new_friendlist.data);
 }
