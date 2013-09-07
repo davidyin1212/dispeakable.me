@@ -1,9 +1,10 @@
-// listening for an event / one-time requests
-// coming from the popup
+// // listening for an event / one-time requests
+// // coming from the popup
 // chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 //     switch(request.type) {
 //         case "getSelection":
-//             getSelection();
+//         	console.log("shit");
+//           getSelection();
 //         break;
 //     }
 //     return true;

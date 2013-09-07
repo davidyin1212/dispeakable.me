@@ -22,7 +22,7 @@
     "node-uuid" : "1.x",
     "async" : "0.2.x",
     "rsa-json" : "0.1.x",
-    "simple_rsa_encrypt" : "0.2.x"
+    "node-uuid" : "1.4.x"
   },
   "devDependencies": {
   },

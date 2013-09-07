@@ -1,7 +1,3 @@
 {
-	"port" : 8080,
-	"pg_user" : "cisociety",
-	"pg_pw" : "5vbC6721S2bLKBh",
-	"pg_db" : "cisociety",
-	"pg_host" : "localhost"
+	"port" : 80
 }
