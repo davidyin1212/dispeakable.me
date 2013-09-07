@@ -27,20 +27,27 @@ function getContent(theUrl){
   );
 }
 
-function setKey(uid,privatekey,publickey){
+function setKey(uid,publickey){
   var person = {};
   person["uid"] = uid;
   person["public"] = publickey;
 
-  var prev_friendlist = JSON.parse(localStorage.getItem("friendlist"));
+  var prev_friendlist = localStorage.getItem("friendlist");
   var new_friendlist = {'data':[]};
 
   if (prev_friendlist == null){
+    // if prev freindlist is null, then we add a new array.
   	new_friendlist.data.push(JSON.stringify(person));
+    localStorage.setItem("friendlist", JSON.stringify(new_friendlist));
+
   }else {
-  	new_friendlist = prev_friendlist.data.push(JSON.stringify(person));
+    // if there's list already, then we get the localstorage item and add to it, store the new list.
+    console.log(prev_friendlist);
+
+
+    //new_friendlist = prev_friendlist.push(JSON.stringify(person));
+    
   }
-  localStorage.setItem("friendlist", new_friendlist);
-  console.log(new_friendlist.data.length);
-  console.log(new_friendlist.data);
+  //console.log(new_friendlist.data.length);
+  //console.log(new_friendlist);
 }
