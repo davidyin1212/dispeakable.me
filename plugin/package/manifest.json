@@ -7,6 +7,9 @@
   "description": "This extension blah blah blah blah.....",
   "version": "0.1",
   "content_security_policy": "script-src 'self' https://netdna.bootstrapcdn.com; object-src 'self'",
+  "icons": {  "16": "img/icon16.png",
+              "48": "img/icon48.png",
+              "128": "img/icon128.png" },
   "permissions": [
     "tabs",
     "contentSettings",

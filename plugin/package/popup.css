@@ -10,10 +10,77 @@
   font-weight: 400;
   src: local('Ubuntu Condensed'), local('UbuntuCondensed-Regular'), url(http://themes.googleusercontent.com/static/fonts/ubuntucondensed/v3/DBCt-NXN57MTAFjitYxdrFzqCfRpIA3W6ypxnPISCPA.woff) format('woff');
 }
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
 
+.clearfix:after {
+    clear: both;
+}
+
+/*
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+
+.clearfix {
+    *zoom: 1;
+}
 body{
   font-family: "Ubuntu Condensed", Helvetica, Arial, sans-serif;
+  background-color: #aaaaaa;
+  margin: 0;
+  position: relative;
 }
 h1,h2,h3,h4,h5,h6{
   font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;  
 }
+h1 a, h1 a:hover, h1 a:visited, h1 a:focus, h1 a:active{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  padding: 0.25em;
+}
+h1 a:hover{
+  text-shadow: 1px 1px 2px #666666;
+  color: #ffff00;
+}
+h1{
+  display:inline-block;
+  float:left;
+  position: relative;
+  margin: 5px 0 0 0 ;
+}
+nav{
+  position: absolute;
+  width:100%;
+  height: 2em;
+  background-color: #ffffff;
+}
+.header-flag{
+  background-color: #ffff00;
+  position: relative;
+  display: inline-block;
+}
+.header-flag:after{
+  content: "";
+  height: 0;
+  width: 0;
+  border-top: 0px solid #666666;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #666666;
+  position: absolute;
+  right: -15px;
+  bottom: 0;
+}
+.alert{
+  display: none;
+}
+
+button {
+  background-color: #ffff00;
+  border: none;
+}
+

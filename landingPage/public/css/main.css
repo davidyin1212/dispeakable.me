@@ -6,7 +6,9 @@ body{
 h1,h2,h3,h4,h5,h6{
   font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;  
 }
-
+section{
+  position: relative;
+}
 /*HEADER*/
 header .header-container{
   background-color: #FFFFFF;
@@ -41,6 +43,7 @@ header a{
 }
 nav{
   float: left;
+  width: 100%;
 }
 nav ul{
   float: right;
@@ -53,7 +56,7 @@ nav li{
 }
 nav .title a:hover {
   color: #ffff00;
-  text-shadow: 1px 1px 2px #000000;
+  text-shadow: inset 1px 1px 2px #000000;
   transition: 0.5s;
 }
 nav ul a:hover {
@@ -85,12 +88,16 @@ nav ul a:hover {
   background-color: #ffff00;
   color: #000000;
   text-transform: uppercase;
+  margin: 0;
 }
 #home aside .banner-title a{
   text-decoration: none;
   font-weight: 900;
   font-weight: 400;
   
+}
+#home .wrapper{
+  margin-bottom: 0;
 }
 
 #home aside .banner-title a:visited{
