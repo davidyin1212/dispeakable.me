@@ -207,7 +207,7 @@ body {
 *  5.55555% | %  25  50  75  100 | 5.55555%
 *
 */
-header, .twoway {
+header, section, .twoway {
   margin: 0 5.555555555555555%;
 }
 h1, h2 {
@@ -298,7 +298,7 @@ h3 {
   
     font-size: 1em;
   }
-  header, .twoway {
+  header, section, .twoway {
     margin: 0 16.666666666666664%;
   }
 }
@@ -317,7 +317,7 @@ h3 {
   
     font-size: 1em;
   }
-  header, .twoway {
+  header, section, .twoway {
     margin: 0 27.77777777777778%;
   }
 }
@@ -340,7 +340,7 @@ h3 {
 */
 /* @media screen and (min-width: 1872px) */
 @media screen and (min-width: 117em) {
-  header, .twoway {
+  header, section, .twoway {
     margin: 0 5.555555555555555%;
   }
   header .wrapper {

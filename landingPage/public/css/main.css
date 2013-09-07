@@ -1,23 +1,15 @@
 body{
-  background-color: #000000;
+  background-color: #aaaaaa;
   font-family: "Ubuntu Condensed", Helvetica, Arial, sans-serif;
 }
 h1,h2,h3,h4,h5,h6{
   font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;  
 }
-.header-container{
-  background-color: #FFFFFF;
-  margin: 0 1em;
-  text-transform: uppercase;
-}
+
 /*HEADER*/
-header{
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
-header > *{
-  display: inline-block;
+header .header-container{
+  background-color: #FFFFFF;
+  text-transform: uppercase;
 }
 header .flag-wrapper{
   padding: 5px 2em;
@@ -54,8 +46,7 @@ nav ul{
 }
 nav li{
   display: inline-block;
-  padding: 0 1.5em;
-  margin: 0 0.5em;
+  padding: 0 1.25em;
   position: relative;
 }
 nav a:hover li{
