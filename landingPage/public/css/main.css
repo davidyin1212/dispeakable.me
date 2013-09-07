@@ -104,7 +104,17 @@ nav ul a:hover {
 #home aside .banner-title i{
   margin-left: 0.5em;
 }
-
+#install {
+  background-color: #ffff00; 
+  color: black;
+  margin-bottom: 4em;
+}
+#install h2{
+  text-align: center
+}
+#install .wrapper{
+  margin: 0 10%;
+}
 .banner-wrapper{
   text-align: center;
   background-color: #ffffff;
