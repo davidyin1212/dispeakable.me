@@ -22,7 +22,7 @@ function getContent(theUrl){
   $.getJSON(
     theUrl,
     function(data) {
-      setKey(data["uid"],data["private"],data["public"]);
+      setKey(data["uid"],data["public"]);
     }
   );
 }
@@ -32,16 +32,15 @@ function setKey(uid,privatekey,publickey){
   person["uid"] = uid;
   person["public"] = publickey;
 
-  var prev_friendlist = localStorage.getItem("friendlist");
-  var new_friendlist = [];
+  var prev_friendlist = JSON.parse(localStorage.getItem("friendlist"));
+  var new_friendlist = {'data':[]};
 
   if (prev_friendlist == null){
-  	new_friendlist.push(JSON.stringify(person));
+  	new_friendlist.data.push(JSON.stringify(person));
   }else {
-  	new_friendlist = prev_friendlist.push(JSON.stringify(person));
+  	new_friendlist = prev_friendlist.data.push(JSON.stringify(person));
   }
   localStorage.setItem("friendlist", new_friendlist);
-
-
-
+  console.log(new_friendlist.data.length);
+  console.log(new_friendlist.data);
 }
