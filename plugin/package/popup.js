@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
   document.getElementById('lead').addEventListener('click', openPage);
+  document.getElementById('decryptBtn').addEventListener('click', decryptPage);
+
 });
 
 
@@ -15,13 +17,9 @@ function getSelectionHandler() {
 }
 
 function openPage(){
-  // chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  //   chrome.tabs.sendMessage(tabs[0].id, {method: "openLink"}, function(response){
-  //     console.log(JSON.stringify(response));
-  //   });
-  // });
-chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-  console.log(response.farewell);
-});
+  chrome.tabs.create({ url: "http://www.dispeakable.me" });
 }
 
+function decryptPage(){
+  
+}
