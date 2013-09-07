@@ -1,6 +1,9 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
+  document.getElementById('lead').addEventListener('click', openPage);
+  document.getElementById('decryptBtn').addEventListener('click', decryptPage);
+
 });
 
 
@@ -11,7 +14,12 @@ function getSelectionHandler() {
 	  	console.log(JSON.stringify(response));
 	  });
 	});
+}
 
+function openPage(){
+  chrome.tabs.create({ url: "http://www.dispeakable.me" });
+}
 
-	
+function decryptPage(){
+  
 }

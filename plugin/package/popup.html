@@ -1,17 +1,62 @@
 <!doctype html>
 <html>
   <head>
-    <title>Dispeakable Me!</title>
+    <title>Dispeakable.me!</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap.3.0.0.css" />
     <link rel="stylesheet" type="text/css" href="popup.css" />
     <script type="text/javascript" src="popup.js"></script>
     <script type="text/javascript" src="dropbox.js"></script>
     <script type="text/javascript" src="jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="jsencrypt.min.js"></script>
   </head>
 
   <body>
     
-      <input type="button" value="Get Selection" id="getSelectionBtn"></input>
-      <input type="button" value="Connect to Dropbox"></input>
+    <div class="container">
+      <div class="page-header">
+        <h1 id="lead"><a>Dispeakable.me</a></h1>
+      </div>
+
+      <div style="width:100%;text-align:center;">
+
+        <label>Recipients</label>
+        <select multiple class="form-control" style="margin-bottom:10px;">
+          <option data-uid="asdf1">Denny</option>
+          <option data-uid="asdf2">Dave</option>
+          <option data-uid="asdf3">Wil</option>
+          <option data-uid="asdf4">Somang</option>
+        </select>
+
+        <button id="getSelectionBtn" type="button" class="btn btn-default" style="width:100%;"><b>Encrypt!</b></button>
+        <hr>
+        <button id="decryptBtn" type="button" class="btn btn-primary" style="width:100%;"><b>Decrypt the page</b></button>
+
+        <div class="clearfix" style="margin-bottom:10px;"></div>
+
+        <div class="alert alert-danger">
+          <strong>Error</strong> Please select texts to encrypt
+        </div>
+
+        <div class="alert alert-success">
+          <strong>Success!</strong>
+        </div>
+
+        <hr>
+
+        <input type="text" class="form-control" id="friend_link" placeholder="Paste your friend's key link here">
+
+        <div class="clearfix" style="margin-bottom:10px;"></div>
+
+        <button id="" type="button" class="btn btn-info"><b>Share PubKey</b></button>
+        <h3>Your PubKey link</h3>
+        <a>http://example.com/uid=asdkjflkajsef</a>
+      </div>
+
+    </div>
+
+    <div class="progress" style="margin-top:5px; margin-bottom:0;">
+      <div class="progress-bar" style="width: 100%;"></div>
+    </div>    
 
   </body>
 </html>
