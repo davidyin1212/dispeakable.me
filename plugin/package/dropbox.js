@@ -1,22 +1,21 @@
 APP_KEY = "j2q6r6vvd5g8ulm"
 
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('keygetter').addEventListener('click', clickHandler);
+  $('#friend_link').on('keyup', function(e) {
+    if (e.keyCode === 13) {
+    	clickHandler();
+    }
+  });
 });
 
 console.log("chosen.")
 
 // Send message to background script
 function clickHandler() {
-  var linkaddress = document.getElementById("linkbox") 
+  var linkaddress = document.getElementById("friend_link") 
   var linkcontent = linkaddress.value
   // Read contents as string from given link.
   getContent(linkcontent);
-  //testing file, https://dl.dropboxusercontent.com/u/2273579/pkfile
-
-  /*
-    local storage for chrome extensions folder/fs
-    */
 }
 
 function getContent(theUrl){
@@ -29,17 +28,20 @@ function getContent(theUrl){
 }
 
 function setKey(uid,privatekey,publickey){
-  var obj = {};
-  obj["myuid"] = uid;
-  obj["myprivate"] = privatekey;
-  obj["mypublic"] = publickey;
+  var person = {};
+  person["uid"] = uid;
+  person["public"] = publickey;
 
-  console.log(obj);
-    
-    localStorage.setItem("mykeys",JSON.stringify(obj));
+  var prev_friendlist = localStorage.getItem("friendlist");
+  var new_friendlist = [];
 
-    var getobjfromstoragesample = localStorage.getItem("mykeys");
-    
-    console.log(JSON.parse(getobjfromstoragesample));
-    
+  if (prev_friendlist == null){
+  	new_friendlist.push(JSON.stringify(person));
+  }else {
+  	new_friendlist = prev_friendlist.push(JSON.stringify(person));
+  }
+  localStorage.setItem("friendlist", new_friendlist);
+
+
+
 }
