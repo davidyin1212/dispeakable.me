@@ -1,6 +1,21 @@
-  
+
+
+
+// Send message to background script
 function getSelection() {
-  chrome.tabs.sendRequest(tab.id, {method: "getSelection"}, function(response){
-     alert(response.data);
-  });	
+
+
+	// chrome.extension.sendMessage({
+	// 	type: "getSelection"
+	// });
+	alert("test");
 }
+
+
+// $(document).ready(){
+// 	$('#button1').on("click", function(){
+// 	alert("shit");
+// 	});
+// };
+
+
