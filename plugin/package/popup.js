@@ -56,7 +56,7 @@ var addFriend = function(e){
   var obj = JSON.parse(dec);
   obj.name = fname;
 
-  var flist = JSON.parse(localStorage.getItem('friends'));
+  var flist = JSON.parse(localStorage.getItem('friends')) ? JSON.parse(localStorage.getItem('friends')) : [];
   flist.push(obj);
   localStorage.setItem('friends', JSON.stringify(flist));
 
