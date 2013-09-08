@@ -1,8 +1,7 @@
-APP_KEY = "j2q6r6vvd5g8ulm"
-
+var APP_KEY = "j2q6r6vvd5g8ulm"
 document.addEventListener('DOMContentLoaded', function () {
   setMyKey();
-
+  setFriendSelect();
   $('#friend_link').on('keyup', function(e) {
     if (e.keyCode === 13) {
     	clickHandler();
@@ -11,6 +10,19 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+function setFriendSelect() {
+  var fList = localStorage.getItem("friendList");
+  if (fList) {
+    fList = JSON.parse(fList);
+    for (var i in fList) {
+      var currentFriend = fList[i];
+      var newOption = $('<option></option>').attr('data-uid', currentFriend["uid"]);
+      newOption.html(currentFriend["name"]);
+
+      $('#friendSelect').append(newOption);
+    }
+  }
+}
 
 // Send message to background script
 function clickHandler() {
