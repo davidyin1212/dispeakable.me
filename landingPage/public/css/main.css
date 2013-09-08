@@ -1,6 +1,7 @@
 body{
   background-color: #aaaaaa;
   font-family: "Ubuntu Condensed", Helvetica, Arial, sans-serif;
+  transition: 0.5s;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -56,7 +57,7 @@ nav li{
 }
 nav .title a:hover {
   color: #ffff00;
-  text-shadow: inset 1px 1px 2px #000000;
+  text-shadow: 1px 1px 2px #000000;
   transition: 0.5s;
 }
 nav ul a:hover {
