@@ -33,12 +33,14 @@ function decryptPage(){
 
 //WILS AREA, STAY THE FUCK OUT!!!
 (function($){
+  pageInitialized = false;
   $(function() {
+    if(pageInitialized) return;
+    pageInitialized = true;
     // Handler for .ready() called.
     var $goggles = $('#goggles');
     var mouseleft = false;
     $(document).on('mouseup', function(e){
-
       $goggles.css({
         'top': 33,
         'left': 29
@@ -46,15 +48,13 @@ function decryptPage(){
       if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
         //TODO send message to background
         $goggles.hide();
+        chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+          console.log(response.farewell);
+        });
       }
+      return false;
     });
-    $goggles.draggable({
-      start: function( event, ui ) {
-      },
-      stop: function( event, ui ) {
-        
-      }
-    });
+    $goggles.draggable();
   });
 })(jQuery);
 
