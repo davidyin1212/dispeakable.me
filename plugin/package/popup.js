@@ -5,8 +5,13 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
+<<<<<<< HEAD
   //document.getElementById('lead').addEventListener('click', openPage);
   document.getElementById('decryptBtn').addEventListener('click', decryptPage);
+=======
+  document.getElementById('aesGenBtn').addEventListener('click', genAES);
+  document.getElementById('addFriend').addEventListener('click', addFriend);
+>>>>>>> bf2fff1b416fb53826d9393096f5ef24aab02e53
 });
 
 
@@ -92,6 +97,38 @@ function getSelectionHandler() {
 	});
 }
 
+var genAES = function(e){
+  var pass = $('#password').val();
+  var me = localStorage.getItem('me');
+  var enc = GibberishAES.enc(me, pass);
+  $('#aes').html(enc);
+  e.preventDefault();
+}
+
+var addFriend = function(e){
+  var fname = $('#friend_name').val();
+  var secret = $('#f_secretKey').val();
+  var fPasskey = $('#fPasskey').val();
+
+  var dec = GibberishAES.dec(fPasskey, secret);
+
+  var obj = JSON.parse(dec);
+  obj.name = fname;
+
+  var flist = JSON.parse(localStorage.getItem('friends'));
+  flist.push(obj);
+  localStorage.setItem('friends', JSON.stringify(flist));
+
+  var newFriend = $("<option></option>").attr("data-uid", obj.uid).html(fname);
+
+  $("#friendSelect").append(newFriend);
+
+  $('#friend_name').val("");
+  $('#f_secretKey').val("");
+  $('#fPasskey').val("");
+  e.preventDefault();
+}
+
 var decrypt = function(uid, msg){
   var flist = JSON.parse(localStorage.getItem('friends'));
   for (var _i = 0; _i < flist.length; _i++){
@@ -131,6 +168,7 @@ var encrypt = function(uid, msg){
   $(function() {
     if(pageInitialized) return;
     pageInitialized = true;
+    chrome.tabs.insertCSS(null, {file: "inject.css"});
     // Handler for .ready() called.
     var $goggles = $('#goggles');
     var mouseleft = false;
@@ -141,13 +179,15 @@ var encrypt = function(uid, msg){
       });
       if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
         //TODO send message to background
-        chrome.runtime.sendMessage({greeting: "potato"}, function(response) {
-          if(response.farewell == "banana"){
-            $goggles.hide();
-          }else{
-            console.log(response.farewell);
-          }
-        });
+        chrome.tabs.executeScript(null, {file: "spy_goggles.js"});
+        $goggles.hide();
+        // chrome.runtime.sendMessage({greeting: "potato"}, function(response) {        
+        //   if(response.farewell == "banana"){
+        //     $goggles.hide();
+        //   }else{
+        //     console.log(response.farewell);
+        //   }
+        // });
       }
       return false;
     });

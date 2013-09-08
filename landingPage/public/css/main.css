@@ -100,7 +100,7 @@ nav ul a:hover {
   margin-bottom: 0;
 }
 
-#home aside .banner-title a:visited{
+#home aside .banner-title a, #home aside .banner-title a:visited{
   color: #000000;
 }
 #home aside .banner-title a:hover{
