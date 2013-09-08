@@ -31,8 +31,8 @@ function getSelectionHandler() {
           // console.log(encrypted);
           // console.log(decrypt(uid, encrypted));
         });
-
         console.log(encryptedMsgs);
+        chrome.tabs.sendMessage(tabs[0].id, {method:"updateViewWithEncryptedMessage", encryptedMessage: encryptedMsgs});
 
 	  });
 	});
