@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
   $('#friend_link').on('keyup', function(e) {
     if (e.keyCode === 13) {
     	clickHandler();
-
     }
   });
 });
