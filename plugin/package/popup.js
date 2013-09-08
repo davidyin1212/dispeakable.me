@@ -1,3 +1,7 @@
+//TODO this is necessary during DEV, to reload bkg page
+var bkg = chrome.extension.getBackgroundPage();
+bkg.location.reload();
+//reload code ends
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
@@ -75,9 +79,12 @@ var encrypt = function(uid, msg){
       });
       if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
         //TODO send message to background
-        $goggles.hide();
-        chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-          console.log(response.farewell);
+        chrome.runtime.sendMessage({greeting: "potato"}, function(response) {
+          if(response.farewell == "banana"){
+            $goggles.hide();
+          }else{
+            console.log(response.farewell);
+          }
         });
       }
       return false;
