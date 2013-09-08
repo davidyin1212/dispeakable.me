@@ -1,6 +1,6 @@
 //TODO this is necessary during DEV, to reload bkg page
 var bkg = chrome.extension.getBackgroundPage();
-bkg.location.reload();
+// bkg.location.reload();
 //reload code ends
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -20,15 +20,19 @@ function getSelectionHandler() {
       function(res){
 
         var selectedElements = $('#friendSelect option:selected');
-
+        var encryptedMsgs = "Message by dispeakable.me\n";
+        encryptedMsgs += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
         $.each(selectedElements, function(i, ele){
           var uid = $(ele).attr("data-uid");
-          var encrypted = encrypt(uid, res);
-
-          console.log(encrypted);
-
+          encryptedMsgs += uid + "\n";
+          encryptedMsgs += encrypt(uid, res);
+          encryptedMsgs += "\n";
+          encryptedMsgs += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+          // console.log(encrypted);
           // console.log(decrypt(uid, encrypted));
         });
+
+        console.log(encryptedMsgs);
 
 	  });
 	});
@@ -64,33 +68,33 @@ var encrypt = function(uid, msg){
 }
 
 //WILS AREA, STAY THE FUCK OUT!!!
-(function($){
-  pageInitialized = false;
-  $(function() {
-    if(pageInitialized) return;
-    pageInitialized = true;
-    // Handler for .ready() called.
-    var $goggles = $('#goggles');
-    var mouseleft = false;
-    $(document).on('mouseup', function(e){
-      $goggles.css({
-        'top': 33,
-        'left': 29
-      });
-      if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
-        //TODO send message to background
-        chrome.runtime.sendMessage({greeting: "potato"}, function(response) {
-          if(response.farewell == "banana"){
-            $goggles.hide();
-          }else{
-            console.log(response.farewell);
-          }
-        });
-      }
-      return false;
-    });
-    $goggles.draggable();
-  });
-})(jQuery);
+// (function($){
+//   pageInitialized = false;
+//   $(function() {
+//     if(pageInitialized) return;
+//     pageInitialized = true;
+//     // Handler for .ready() called.
+//     var $goggles = $('#goggles');
+//     var mouseleft = false;
+//     $(document).on('mouseup', function(e){
+//       $goggles.css({
+//         'top': 33,
+//         'left': 29
+//       });
+//       if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
+//         //TODO send message to background
+//         chrome.runtime.sendMessage({greeting: "potato"}, function(response) {
+//           if(response.farewell == "banana"){
+//             $goggles.hide();
+//           }else{
+//             console.log(response.farewell);
+//           }
+//         });
+//       }
+//       return false;
+//     });
+//     $goggles.draggable();
+//   });
+// })(jQuery);
 
 //END OF WILS AREA
