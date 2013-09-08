@@ -5,8 +5,8 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
-  //document.getElementById('lead').addEventListener('click', openPage);
-  //document.getElementById('decryptBtn').addEventListener('click', decryptPage);
+  document.getElementById('aesGenBtn').addEventListener('click', genAES);
+  document.getElementById('addFriend').addEventListener('click', addFriend);
 });
 
 
@@ -36,6 +36,38 @@ function getSelectionHandler() {
 
 	  });
 	});
+}
+
+var genAES = function(e){
+  var pass = $('#password').val();
+  var me = localStorage.getItem('me');
+  var enc = GibberishAES.enc(me, pass);
+  $('#aes').html(enc);
+  e.preventDefault();
+}
+
+var addFriend = function(e){
+  var fname = $('#friend_name').val();
+  var secret = $('#f_secretKey').val();
+  var fPasskey = $('#fPasskey').val();
+
+  var dec = GibberishAES.dec(fPasskey, secret);
+
+  var obj = JSON.parse(dec);
+  obj.name = fname;
+
+  var flist = JSON.parse(localStorage.getItem('friends'));
+  flist.push(obj);
+  localStorage.setItem('friends', JSON.stringify(flist));
+
+  var newFriend = $("<option></option>").attr("data-uid", obj.uid).html(fname);
+
+  $("#friendSelect").append(newFriend);
+
+  $('#friend_name').val("");
+  $('#f_secretKey').val("");
+  $('#fPasskey').val("");
+  e.preventDefault();
 }
 
 var decrypt = function(uid, msg){
