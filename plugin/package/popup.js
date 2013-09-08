@@ -1,6 +1,6 @@
 //TODO this is necessary during DEV, to reload bkg page
 var bkg = chrome.extension.getBackgroundPage();
-bkg.location.reload();
+// bkg.location.reload();
 //reload code ends
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -20,15 +20,19 @@ function getSelectionHandler() {
       function(res){
 
         var selectedElements = $('#friendSelect option:selected');
-
+        var encryptedMsgs = "Message by dispeakable.me\n";
+        encryptedMsgs += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
         $.each(selectedElements, function(i, ele){
           var uid = $(ele).attr("data-uid");
-          var encrypted = encrypt(uid, res);
-
-          console.log(encrypted);
-
+          encryptedMsgs += uid + "\n";
+          encryptedMsgs += encrypt(uid, res);
+          encryptedMsgs += "\n";
+          encryptedMsgs += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+          // console.log(encrypted);
           // console.log(decrypt(uid, encrypted));
         });
+
+        console.log(encryptedMsgs);
 
 	  });
 	});
