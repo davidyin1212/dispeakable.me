@@ -5,13 +5,12 @@
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
-<<<<<<< HEAD
+
   //document.getElementById('lead').addEventListener('click', openPage);
   document.getElementById('decryptBtn').addEventListener('click', decryptPage);
-=======
+
   document.getElementById('aesGenBtn').addEventListener('click', genAES);
   document.getElementById('addFriend').addEventListener('click', addFriend);
->>>>>>> bf2fff1b416fb53826d9393096f5ef24aab02e53
 });
 
 
