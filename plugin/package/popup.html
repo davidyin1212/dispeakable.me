@@ -4,10 +4,11 @@
     <title>Dispeakable.me!</title>
     <!-- <link rel="stylesheet" type="text/css" href="bootstrap.3.0.0.css" /> -->
     <link rel="stylesheet" type="text/css" href="popup.css" />
-    <script type="text/javascript" src="cipherLib.js"></script>
+    <script type="text/javascript" src="jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="jquery-ui-1.10.3.custom.min.js"></script>
     <script type="text/javascript" src="popup.js"></script>
     <script type="text/javascript" src="cipherLib.js"></script>
-    <script type="text/javascript" src="jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="popup.js"></script>
     <script type="text/javascript" src="jsencrypt.min.js"></script>
   </head>
 
@@ -22,9 +23,9 @@
     </header>
       <div style="width:100%;text-align:center;">
 
-        <label>Recipients</label>
-        <select multiple class="form-control" style="margin-bottom:10px;" id="friendSelect">
-
+        <h2>Recipients</h2>
+        <select multiple class="form-control" style="margin-bottom:10px;">
+ 
         </select>
 
         <button id="getSelectionBtn" type="button" class="btn btn-default" style="width:100%;"><b>Encrypt!</b></button>
@@ -42,8 +43,6 @@
           <strong>Success!</strong>
         </div>
 
-        <hr>
-
         <input type="text" class="form-control" id="friend_name" placeholder="Type your friend's name here">
 
         <input type="text" class="form-control" id="friend_link" placeholder="Paste your friend's key link here">
@@ -54,7 +53,10 @@
         <h3>Your PubKey link</h3>
         <a>http://example.com/uid=asdkjflkajsef</a>
       </div>
-      <div class="decrypt-btn"><img src="/img/minion.png"/></div>
+      <div id="decrypt-btn">
+        <img src="/img/minion.png"/>
+        <img id="goggles" src="/img/goggles-small.png">
+      </div>
     </div><!-- container -->
 
     <div class="progress" style="margin-top:5px; margin-bottom:0;">

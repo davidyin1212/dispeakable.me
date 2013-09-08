@@ -54,8 +54,36 @@ var encrypt = function(uid, msg){
       // TODO : Should be public key. Library bug?
       encrypt.setPrivateKey(flist[_i].private);
       // encrypt.setPublicKey(flist[_i].public);
-
       return encrypt.encrypt(msg);
     }
   }
 }
+
+//WILS AREA, STAY THE FUCK OUT!!!
+(function($){
+  pageInitialized = false;
+  $(function() {
+    if(pageInitialized) return;
+    pageInitialized = true;
+    // Handler for .ready() called.
+    var $goggles = $('#goggles');
+    var mouseleft = false;
+    $(document).on('mouseup', function(e){
+      $goggles.css({
+        'top': 33,
+        'left': 29
+      });
+      if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
+        //TODO send message to background
+        $goggles.hide();
+        chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
+          console.log(response.farewell);
+        });
+      }
+      return false;
+    });
+    $goggles.draggable();
+  });
+})(jQuery);
+
+//END OF WILS AREA
