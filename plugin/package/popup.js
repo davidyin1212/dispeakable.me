@@ -1,5 +1,5 @@
 //TODO this is necessary during DEV, to reload bkg page
-var bkg = chrome.extension.getBackgroundPage();
+// var bkg = chrome.extension.getBackgroundPage();
 // bkg.location.reload();
 //reload code ends
 

@@ -24,6 +24,8 @@ function resetArea() {
 
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+  
+    console.log(request);
 
   	if (request.method == "getSelection"){
   		rangy.init();
