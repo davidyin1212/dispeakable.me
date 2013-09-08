@@ -24,6 +24,8 @@ function resetArea() {
 
 
 chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
+  
+    console.log(request);
 
   	if (request.method == "getSelection"){
   		rangy.init();
@@ -40,6 +42,9 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
   	} else if(request.method == "encrypt") {
   		var selectionString = window.getSelection().toString();
       return sendResponse(selectionString);
+  	} else if (request.method =="updateViewWithEncryptedMessage") {
+  		var inputDOM = $(window.getSelection().anchorNode).children()[0];
+  		inputDOM.value = request.encryptedMessage;
   	}
     else {
       sendResponse({a:"a"}); // Invalid method

@@ -1,12 +1,12 @@
 //TODO this is necessary during DEV, to reload bkg page
-var bkg = chrome.extension.getBackgroundPage();
+// var bkg = chrome.extension.getBackgroundPage();
 // bkg.location.reload();
 //reload code ends
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
-  //document.getElementById('lead').addEventListener('click', openPage);
-  //document.getElementById('decryptBtn').addEventListener('click', decryptPage);
+  document.getElementById('aesGenBtn').addEventListener('click', genAES);
+  document.getElementById('addFriend').addEventListener('click', addFriend);
 });
 
 
@@ -20,7 +20,7 @@ function getSelectionHandler() {
       function(res){
 
         var selectedElements = $('#friendSelect option:selected');
-        var encryptedMsgs = "Message by dispeakable.me\n";
+        var encryptedMsgs = "Message by www.dispeakable.me\n";
         encryptedMsgs += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
         $.each(selectedElements, function(i, ele){
           var uid = $(ele).attr("data-uid");
@@ -31,11 +31,43 @@ function getSelectionHandler() {
           // console.log(encrypted);
           // console.log(decrypt(uid, encrypted));
         });
-
         console.log(encryptedMsgs);
+        chrome.tabs.sendMessage(tabs[0].id, {method:"updateViewWithEncryptedMessage", encryptedMessage: encryptedMsgs});
 
 	  });
 	});
+}
+
+var genAES = function(e){
+  var pass = $('#password').val();
+  var me = localStorage.getItem('me');
+  var enc = GibberishAES.enc(me, pass);
+  $('#aes').html(enc);
+  e.preventDefault();
+}
+
+var addFriend = function(e){
+  var fname = $('#friend_name').val();
+  var secret = $('#f_secretKey').val();
+  var fPasskey = $('#fPasskey').val();
+
+  var dec = GibberishAES.dec(fPasskey, secret);
+
+  var obj = JSON.parse(dec);
+  obj.name = fname;
+
+  var flist = JSON.parse(localStorage.getItem('friends'));
+  flist.push(obj);
+  localStorage.setItem('friends', JSON.stringify(flist));
+
+  var newFriend = $("<option></option>").attr("data-uid", obj.uid).html(fname);
+
+  $("#friendSelect").append(newFriend);
+
+  $('#friend_name').val("");
+  $('#f_secretKey').val("");
+  $('#fPasskey').val("");
+  e.preventDefault();
 }
 
 var decrypt = function(uid, msg){

@@ -30,7 +30,7 @@
 }
 html, body{
   width: 300px;
-  height: 626px;
+  /*height: 626px;*/
   overflow:hidden;
   position:relative;
 }
@@ -88,7 +88,7 @@ nav{
 button {
   background-color: #ffff00;
   border: none;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 select{
@@ -106,4 +106,9 @@ select{
   top: 33px;
   width: 80%;
   left: 29px;
+}
+
+input,
+textarea {
+  width: 80%;
 }
