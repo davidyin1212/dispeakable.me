@@ -6,9 +6,63 @@
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
   //document.getElementById('lead').addEventListener('click', openPage);
-  //document.getElementById('decryptBtn').addEventListener('click', decryptPage);
+  document.getElementById('decryptBtn').addEventListener('click', decryptPage);
 });
 
+
+function decryptPage() {
+
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+
+    chrome.tabs.sendMessage(tabs[0].id, {method: "getSelection"}, function(response){
+      console.log("clicked");
+      var myuid = JSON.parse(localStorage.getItem("me")).uid
+
+
+      var encryptedMsg = response.data.split("\n");
+      var nextIsUid = false;
+      var parsedEncryptedMsg = ""
+      console.log(encryptedMsg);
+      for (var i in encryptedMsg) {
+        // IF it's content parse the content
+        if (nextIsUid) {
+          console.log("=>  " + encryptedMsg[i]);
+          if (myuid == encryptedMsg[i]) {
+            console.log("found my uid damn!");
+            i++;
+            parsedEncryptedMsg = encryptedMsg[i];
+            console.log(parsedEncryptedMsg);
+            // At this point parsing is done, now decrypt and call contentscript
+            var decryptedMsg = decrypt(myuid, parsedEncryptedMsg);
+            console.log("Decrypted msg is :" + decryptedMsg);
+            // Now communicate
+            updateViewWithDecryptedMsg(decryptedMsg);
+
+          }
+          else {
+            nextIsUid = false;
+          }
+        }
+        if (encryptedMsg[i] == "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"){
+          nextIsUid = true;
+        }
+
+      }
+
+      // Now communicate to content script to update the view
+
+
+
+
+    });
+  });
+}
+
+function updateViewWithDecryptedMsg(decryptedMsg) {
+  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+    return chrome.tabs.sendMessage(tabs[0].id, {method: "updateViewWithDecryptedMessage", decryptedMsg:decryptedMsg}, null);
+  });
+}
 
 // Send message to background script
 function getSelectionHandler() {
@@ -65,6 +119,10 @@ var encrypt = function(uid, msg){
       return encrypt.encrypt(msg);
     }
   }
+  // var me = JSON.parse(localStorage.getItem('me'));
+  // var decrypt = new JSEncrypt({default_key_size : 2048});
+  // decrypt.setPrivateKey(me.private);
+  // return decrypt.encrypt(msg);
 }
 
 //WILS AREA, STAY THE FUCK OUT!!!
