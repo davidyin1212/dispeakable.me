@@ -73,6 +73,7 @@ var encrypt = function(uid, msg){
   $(function() {
     if(pageInitialized) return;
     pageInitialized = true;
+    chrome.tabs.insertCSS(null, {file: "inject.css"});
     // Handler for .ready() called.
     var $goggles = $('#goggles');
     var mouseleft = false;
@@ -83,13 +84,15 @@ var encrypt = function(uid, msg){
       });
       if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
         //TODO send message to background
-        chrome.runtime.sendMessage({greeting: "potato"}, function(response) {
-          if(response.farewell == "banana"){
-            $goggles.hide();
-          }else{
-            console.log(response.farewell);
-          }
-        });
+        chrome.tabs.executeScript(null, {file: "spy_goggles.js"});
+        $goggles.hide();
+        // chrome.runtime.sendMessage({greeting: "potato"}, function(response) {        
+        //   if(response.farewell == "banana"){
+        //     $goggles.hide();
+        //   }else{
+        //     console.log(response.farewell);
+        //   }
+        // });
       }
       return false;
     });
