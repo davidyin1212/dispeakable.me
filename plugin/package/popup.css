@@ -28,6 +28,12 @@
 .clearfix {
     *zoom: 1;
 }
+html, body{
+  width: 300px;
+  height: 626px;
+  overflow:hidden;
+  position:relative;
+}
 body{
   font-family: "Ubuntu Condensed", Helvetica, Arial, sans-serif;
   background-color: #aaaaaa;
@@ -82,5 +88,22 @@ nav{
 button {
   background-color: #ffff00;
   border: none;
+  width: 80%;
+  margin: 0 auto;
+}
+select{
+  display: block;
+  width: 80%;
+  margin: 0 auto;
 }
 
+#decrypt-btn{
+  cursor: move;
+  position: relative;
+}
+#goggles{
+  position: absolute;
+  top: 33px;
+  width: 80%;
+  left: 29px;
+}
