@@ -161,7 +161,7 @@ body {
   font-size: 1em;
   line-height: 1.5em;
 }
-.inner{
+.inner, .twoway .inner.wrapper{
   width: 100%;
 }
 .twoway.right .wrapper{

@@ -123,6 +123,9 @@ nav ul a:hover {
 #install .wrapper{
   margin: 0 10%;
 }
+#about .wrapper h2{
+  margin-top: 0;
+}
 .banner-wrapper{
   text-align: center;
   background-color: #ffffff;
