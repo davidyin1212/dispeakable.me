@@ -10,14 +10,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function setFriendSelect() {
-  var fList = localStorage.getItem("friendList");
+  $('#friendSelect').empty();
+  var fList = localStorage.getItem("friends");
   if (fList) {
     fList = JSON.parse(fList);
     for (var i in fList) {
       var currentFriend = fList[i];
       var newOption = $('<option></option>').attr('data-uid', currentFriend["uid"]);
       newOption.html(currentFriend["name"]);
-
       $('#friendSelect').append(newOption);
     }
   }
@@ -48,8 +48,6 @@ function setMyKey() {
         localStorage.setItem("me", JSON.stringify(data));
       }
     );
-
-
   }
 }
 
@@ -60,11 +58,11 @@ function setFriendsKey(uid,publickey,name){
   var uidExists = false;
   
   // Create object representing friendList in localStorage
-  if (localStorage.getItem("friendList") == null) {
+  if (localStorage.getItem("friends") == null) {
     friendList = [];
   }
   else {
-    friendList = JSON.parse(localStorage.getItem("friendList"));
+    friendList = JSON.parse(localStorage.getItem("friends"));
   }
 
   // First if uid exists in localStorage
@@ -80,7 +78,7 @@ function setFriendsKey(uid,publickey,name){
   }
 
   // Now synchronize
-  localStorage.setItem("friendList", JSON.stringify(friendList));
+  localStorage.setItem("friends", JSON.stringify(friendList));
 
 
   // if (prev_friendlist == null){

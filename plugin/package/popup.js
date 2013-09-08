@@ -1,3 +1,7 @@
+//TODO this is necessary during DEV, to reload bkg page
+var bkg = chrome.extension.getBackgroundPage();
+bkg.location.reload();
+//reload code ends
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById("getSelectionBtn").addEventListener('click', getSelectionHandler);
@@ -8,27 +12,55 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Send message to background script
 function getSelectionHandler() {
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-		var uids = [];
-		var selectedElements = $('#friendSelect option:selected');
-		
-		for (var i in selectedElements) {
-			var current = selectedElements[i];
-			uids.push(current.attr("data-uid"));
-		}
 
-	  chrome.tabs.sendMessage(tabs[0].id, {method: "getSelection", uids: "uids"}, function(response){
-	  	console.log(JSON.stringify(response));
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+
+	  chrome.tabs.sendMessage(tabs[0].id, {method: "encrypt"}, 
+
+      function(res){
+
+        var selectedElements = $('#friendSelect option:selected');
+
+        $.each(selectedElements, function(i, ele){
+          var uid = $(ele).attr("data-uid");
+          var encrypted = encrypt(uid, res);
+
+          console.log(encrypted);
+
+          // console.log(decrypt(uid, encrypted));
+        });
+
 	  });
 	});
 }
 
-// function openPage(url){
-//   chrome.tabs.create({ "url": url });
-// }
+var decrypt = function(uid, msg){
+  var flist = JSON.parse(localStorage.getItem('friends'));
+  for (var _i = 0; _i < flist.length; _i++){
+    if (flist[_i].uid === uid){
+      var decrypt = new JSEncrypt({default_key_size : 2048});
+      decrypt.setPrivateKey(flist[_i].private);
+      return decrypt.decrypt(msg);
+    }
+  }
 
-function decryptPage(){
-  
+  var me = JSON.parse(localStorage.getItem('me'));
+  var decrypt = new JSEncrypt({default_key_size : 2048});
+  decrypt.setPrivateKey(me.private);
+  return decrypt.decrypt(msg);
+}
+
+var encrypt = function(uid, msg){
+  var flist = JSON.parse(localStorage.getItem('friends'));
+  for (var _i = 0; _i < flist.length; _i++){
+    if (flist[_i].uid === uid){
+      var encrypt = new JSEncrypt({default_key_size : 2048});
+      // TODO : Should be public key. Library bug?
+      encrypt.setPrivateKey(flist[_i].private);
+      // encrypt.setPublicKey(flist[_i].public);
+      return encrypt.encrypt(msg);
+    }
+  }
 }
 
 //WILS AREA, STAY THE FUCK OUT!!!
@@ -47,9 +79,12 @@ function decryptPage(){
       });
       if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
         //TODO send message to background
-        $goggles.hide();
-        chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-          console.log(response.farewell);
+        chrome.runtime.sendMessage({greeting: "potato"}, function(response) {
+          if(response.farewell == "banana"){
+            $goggles.hide();
+          }else{
+            console.log(response.farewell);
+          }
         });
       }
       return false;
