@@ -22,7 +22,8 @@
     "node-uuid" : "1.x",
     "async" : "0.2.x",
     "rsa-json" : "0.1.x",
-    "node-uuid" : "1.4.x"
+    "node-uuid" : "1.4.x",
+    "dbox" : "0.6.x"
   },
   "devDependencies": {
   },
