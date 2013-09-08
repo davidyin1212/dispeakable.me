@@ -13,10 +13,7 @@ module.exports = function(settings, nconf, libs) {
   app.get('/keys', function(req, res) {
     return RSA.create(function(ret) {
       ret.uid = uuid.v4().replace(/-/gm, "");
-      res.send(ret);
-      return dbox.requesttoken(function(status, request_token) {
-        return console.log(request_token);
-      });
+      return res.send(ret);
     });
   });
   return this;

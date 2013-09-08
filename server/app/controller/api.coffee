@@ -16,7 +16,4 @@ module.exports = (settings, nconf, libs) ->
       ret.uid = uuid.v4().replace /-/gm, ""
       res.send ret
 
-      dbox.requesttoken (status, request_token) ->
-        console.log request_token
-
   @
