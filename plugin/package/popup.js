@@ -20,7 +20,7 @@ function getSelectionHandler() {
       function(res){
 
         var selectedElements = $('#friendSelect option:selected');
-        var encryptedMsgs = "Message by dispeakable.me\n";
+        var encryptedMsgs = "Message by www.dispeakable.me\n";
         encryptedMsgs += "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
         $.each(selectedElements, function(i, ele){
           var uid = $(ele).attr("data-uid");
