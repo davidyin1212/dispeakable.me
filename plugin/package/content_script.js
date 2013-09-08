@@ -1,5 +1,4 @@
-// rangy.init();
-// var newAreaApplier = rangy.createCssClassApplier("newArea", true);
+
 function injectNewDOM() {
 	var originalDOM = $('.newArea');
 	var newDOM = $('<span class="enryptedMessage">Bitch</span>');
@@ -32,11 +31,17 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 
   		// First, Inject new Hidden div into selected area
   		var selection = window.getSelection();
-  		newAreaApplier.applyToSelection();
 
-  		injectNewDOM();
-  		hideOriginalMessage();
-      sendResponse({data: selection.toString()});
+  		// newAreaApplier.applyToSelection();
+
+  		// injectNewDOM();
+  		// hideOriginalMessage();
+    //   sendResponse({data: selection.toString()});
+  	}
+
+  	else if(request.method == "encrypt") {
+  		var selectionString = window.getSelection().toString();
+  		request.uids // <-- This is list of uids
   	}
     else {
       sendResponse({a:"a"}); // Invalid method
