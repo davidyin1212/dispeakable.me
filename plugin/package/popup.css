@@ -30,7 +30,7 @@
 }
 html, body{
   width: 300px;
-  /*height: 626px;*/
+  height: 413px;
   overflow:hidden;
   position:relative;
 }
@@ -43,6 +43,10 @@ body{
 h1,h2,h3,h4,h5,h6{
   font-family: "Open Sans Condensed", Helvetica, Arial, sans-serif;  
 }
+
+.page-header{
+  width: 100%;
+}
 h1 a, h1 a:hover, h1 a:visited, h1 a:focus, h1 a:active{
   text-transform: uppercase;
   text-decoration: none;
@@ -54,32 +58,57 @@ h1 a:hover{
   color: #ffff00;
 }
 h1{
-  display:inline-block;
-  float:left;
-  position: relative;
-  margin: 5px 0 0 0 ;
+  margin: 0;
 }
 nav{
-  position: absolute;
-  width:100%;
-  height: 2em;
   background-color: #ffffff;
 }
+nav ul{
+  padding:0;
+  margin: 30px 0 0 0;
+}
+nav li{
+  list-style: none;
+  float: left;
+  font-size: 150%;
+  padding: 0.75em 0.25em 0.25em;
+  cursor: pointer;
+  transition: 0.5s;
+  text-transform: uppercase;
+}
+nav li:last-child{
+  float: right;
+}
+nav li:hover{
+  color: #00ff00;
+}
+nav li.active{
+  color: #00ff00;
+  cursor: default;
+}
+nav:hover li.active{
+  color: #000000;
+}
+nav:hover li.active:hover{
+  color: #00ff00;
+}
 .header-flag{
-  background-color: #ffff00;
-  position: relative;
-  display: inline-block;
+background-color: #ffff00;
+position: absolute;
+display: inline-block;
+top: 0;
+right:0;
 }
 .header-flag:after{
   content: "";
   height: 0;
   width: 0;
-  border-top: 0px solid #666666;
-  border-bottom: 15px solid transparent;
-  border-left: 15px solid #666666;
+  border-bottom: 0px solid #666666;
+  border-top: 30px solid transparent;
+  border-right: 15px solid #666666;
   position: absolute;
-  right: -15px;
-  bottom: 0;
+  left: -15px;
+  top: 0;
 }
 .alert{
   display: none;
@@ -88,26 +117,33 @@ nav{
 button {
   background-color: #ffff00;
   border: none;
-  width: 100%;
+  width: 80%;
   margin: 0 auto;
 }
 select{
   display: block;
   width: 80%;
-  margin: 0 auto;
+  height: 180px;
+  margin: 0 auto 10px;
 }
-
+#getSelectionBtn{
+  width:80%;
+}
 #decrypt-btn{
-  cursor: move;
-  position: relative;
+  /*cursor: move;
+  */position: relative;
 }
 #goggles{
   position: absolute;
   top: 33px;
   width: 80%;
-  left: 29px;
+  left: 39px;
+  cursor: pointer;
 }
-
+section{
+  width:100%;
+  text-align:center;
+}
 input,
 textarea {
   width: 80%;

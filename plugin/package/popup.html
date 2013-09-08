@@ -4,6 +4,7 @@
     <title>Dispeakable.me!</title>
     <!-- <link rel="stylesheet" type="text/css" href="bootstrap.3.0.0.css" /> -->
     <link rel="stylesheet" type="text/css" href="popup.css" />
+    <link href='http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="jquery-1.10.2.js"></script>
     <script type="text/javascript" src="jquery-ui-1.10.3.custom.min.js"></script>
     <script type="text/javascript" src="popup.js"></script>
@@ -16,24 +17,31 @@
   <body>
     
     <header class="page-header clearfix">
-      <nav></nav>
+      <nav>
+        <ul class="clearfix">
+          <li class="decrypt active">Decrypt</li>
+          <li class="encrypt">Encrypt</li>
+          <li class="options"><i class="icon-reorder"></i></li>
+        </ul>
+      </nav>
       <div class="header-flag clearfix"><h1 id="lead">
         <a href="http://www.dispeakable.me" target="blank">Dispeakable.me</a>
       </h1>
       </div>
     </header>
-      <div style="width:100%;text-align:center;">
-
-        <h2>Recipients</h2>
-        <select id="friendSelect" multiple class="form-control" style="margin-bottom:10px;">
- 
+      <section class="decrypt">
+        <h3>Highlight text & Click Goggles to Decrypt</h3>
+        <div id="decrypt-btn">
+          <img style="margin-left:10px"src="/img/minion.png"/>
+          <img id="goggles" src="/img/goggles-small.png">
+        </div>
+        <!-- <button id="decryptBtn" type="button" class="btn btn-default"><b>Decrypt</b></button> -->
+      </section>
+      <section class="encrypt" style="display:none;">
+        <h3>Highlight text & Select Recipients</h3>
+        <select id="friendSelect" multiple class="form-control">
         </select>
-
-        <button id="getSelectionBtn" type="button" class="btn btn-default"><b>Encrypt!</b></button>
-
-        <button id="decryptBtn" type="button" class="btn btn-default"><b>Decrypt</b></button>
-
-
+        <button id="getSelectionBtn" type="button" class="btn btn-default"><h2>Encrypt!</h2></button>
         <div class="clearfix" style="margin-bottom:10px;"></div>
 
         <div class="alert alert-danger">
@@ -43,8 +51,10 @@
         <div class="alert alert-success">
           <strong>Success!</strong>
         </div>
-
-        <input id="friend_name" type="text" class="form-control" placeholder="Type your friend's name here">
+      </section>
+      <section class="options"style="display:none;">
+        <h3>Add a Friend</h3>
+      <input id="friend_name" type="text" class="form-control" placeholder="Type your friend's name here">
         <input  id="f_secretKey" type="password" class="form-control" placeholder="Secret Key">
         <textarea id="fPasskey" placeholder="Paste your friend's passkey here" style="margin-bottom:10px;"></textarea>
 
@@ -53,20 +63,13 @@
 
         <div class="clearfix" style="margin-bottom:10px;"></div>
 
-        <h3>Share PubKey</h3>
-        <h3>Generate passkey</h3>
+        <h3>Passkey Generation</h3>
 
         <input type="password" id="password" placeholder="Secret Key" style="margin-bot:20px;">
         <button id="aesGenBtn" type="button" class="btn btn-primary"><b>Generate</b></button>
 
         <textarea id="aes" style="margin-top:10px;"></textarea>
-
-      </div>
-      <div id="decrypt-btn">
-        <img src="/img/minion.png"/>
-        <img id="goggles" src="/img/goggles-small.png">
-      </div>
-    </div><!-- container -->
+      </section>
 
     <div class="progress" style="margin-top:5px; margin-bottom:0;">
       <div class="progress-bar" style="width: 100%;"></div>
