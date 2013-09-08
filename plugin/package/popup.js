@@ -64,7 +64,7 @@ var encrypt = function(uid, msg){
 }
 
 //WILS AREA, STAY THE FUCK OUT!!!
-(function($){
+// (function($){
   pageInitialized = false;
   $(function() {
     if(pageInitialized) return;
@@ -91,6 +91,6 @@ var encrypt = function(uid, msg){
     });
     $goggles.draggable();
   });
-})(jQuery);
+// })(jQuery);
 
 //END OF WILS AREA
