@@ -69,32 +69,32 @@ var encrypt = function(uid, msg){
 
 //WILS AREA, STAY THE FUCK OUT!!!
 // (function($){
-//   pageInitialized = false;
-//   $(function() {
-//     if(pageInitialized) return;
-//     pageInitialized = true;
-//     // Handler for .ready() called.
-//     var $goggles = $('#goggles');
-//     var mouseleft = false;
-//     $(document).on('mouseup', function(e){
-//       $goggles.css({
-//         'top': 33,
-//         'left': 29
-//       });
-//       if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
-//         //TODO send message to background
-//         chrome.runtime.sendMessage({greeting: "potato"}, function(response) {
-//           if(response.farewell == "banana"){
-//             $goggles.hide();
-//           }else{
-//             console.log(response.farewell);
-//           }
-//         });
-//       }
-//       return false;
-//     });
-//     $goggles.draggable();
-//   });
+  pageInitialized = false;
+  $(function() {
+    if(pageInitialized) return;
+    pageInitialized = true;
+    // Handler for .ready() called.
+    var $goggles = $('#goggles');
+    var mouseleft = false;
+    $(document).on('mouseup', function(e){
+      $goggles.css({
+        'top': 33,
+        'left': 29
+      });
+      if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
+        //TODO send message to background
+        chrome.runtime.sendMessage({greeting: "potato"}, function(response) {
+          if(response.farewell == "banana"){
+            $goggles.hide();
+          }else{
+            console.log(response.farewell);
+          }
+        });
+      }
+      return false;
+    });
+    $goggles.draggable();
+  });
 // })(jQuery);
 
 //END OF WILS AREA
