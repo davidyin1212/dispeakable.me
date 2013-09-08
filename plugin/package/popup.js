@@ -178,8 +178,9 @@ var encrypt = function(uid, msg){
       });
       if(e.pageX<0 || e.pageX>300 || e.pageY < 0 || e.pageY > 626){
         //TODO send message to background
-        chrome.tabs.executeScript(null, {file: "spy_goggles.js"});
+        //chrome.tabs.executeScript(null, {file: "spy_goggles.js"});
         $goggles.hide();
+        decryptPage();
         // chrome.runtime.sendMessage({greeting: "potato"}, function(response) {        
         //   if(response.farewell == "banana"){
         //     $goggles.hide();
